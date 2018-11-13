@@ -12,18 +12,19 @@ class Router{
 		if($len===false){
 			$len=strlen($uri);
 		}
-		//$start=strrpos($uri,'/')+1;
+		$start=strrpos($uri,'/')+1;
+		$start=1;
 		if(substr($uri,-1)=='/'){
 			$len=$len-1;
 		}
-		$request=substr($uri,1,$len-1); 
+		$request=substr($uri,$start,$len-1); 
 		
 		$this->ParseRequest($request);
 	}
 	
 	private function ParseRequest($p_Request){
 		if($p_Request===false){
-			$p_Request='itemgen';
+			$p_Request='home';
 		}
 		
 		$requests=$this->fetchRouting();

@@ -1,0 +1,38 @@
+.border-dotted{
+	border:1px dotted #666;
+}
+
+.category{
+	padding:10px;
+	border-radius:4px;
+	margin-bottom:10px;
+
+}
+
+.color-1{
+	background-color:#ffc048;
+}
+.color-1 a{
+	color:#666;
+}
+
+.color-2{
+	background-color:#ffdd59;
+}
+.color-2 a{
+	color:#666;
+}
+
+.color-3{
+	background-color:#ffd32a;
+}
+.color-3 a{
+	color:#666;
+}
+
+.color-4{
+	background-color:#ffa801;
+}
+.color-4 a{
+	color:#666;
+}
