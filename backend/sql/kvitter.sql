@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 13, 2018 at 09:02 PM
+-- Generation Time: Nov 14, 2018 at 02:28 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.0.29
 
@@ -34,13 +34,16 @@ CREATE TABLE IF NOT EXISTS `k_category` (
   `name` varchar(64) NOT NULL,
   `uuid` varchar(128) NOT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Truncate table before insert `k_category`
+-- Dumping data for table `k_category`
 --
 
-TRUNCATE TABLE `k_category`;
+INSERT INTO `k_category` (`id`, `name`, `uuid`) VALUES
+(1, 'Villan', '1accc2445ffe'),
+(2, 'Villan2', '1accc2445cce');
+
 -- --------------------------------------------------------
 
 --
@@ -55,11 +58,6 @@ CREATE TABLE IF NOT EXISTS `k_reciept` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `k_reciept`
---
-
-TRUNCATE TABLE `k_reciept`;
 -- --------------------------------------------------------
 
 --
@@ -74,11 +72,6 @@ CREATE TABLE IF NOT EXISTS `k_reciept_img` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Truncate table before insert `k_reciept_img`
---
-
-TRUNCATE TABLE `k_reciept_img`;
 -- --------------------------------------------------------
 
 --
@@ -94,11 +87,33 @@ CREATE TABLE IF NOT EXISTS `k_reciept_tag` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `k_reciept_tag`
+-- Table structure for table `k_router`
 --
 
-TRUNCATE TABLE `k_reciept_tag`;COMMIT;
+DROP TABLE IF EXISTS `k_router`;
+CREATE TABLE IF NOT EXISTS `k_router` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `request` varchar(128) NOT NULL,
+  `href` varchar(64) NOT NULL,
+  `privilege` int(11) NOT NULL DEFAULT '0',
+  `auto` varchar(64) DEFAULT NULL,
+  `signature` varchar(64) NOT NULL DEFAULT '/.*/',
+  `service` varchar(64) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `k_router`
+--
+
+INSERT INTO `k_router` (`id`, `request`, `href`, `privilege`, `auto`, `signature`, `service`) VALUES
+(1, 'kvitter/home', 'pages/home.php', 0, NULL, '/kvitter\\/home((\\/\\w+)+|\\/?)$.*/', NULL),
+(2, 'kvitter/categories', 'backend/controller/category.php', 0, 'CategoryController', '/kvitter\\/category((\\/\\w+)+|\\/?)$.*/', NULL),
+(3, 'kvitter/reciepts', 'pages/reciepts.php', 0, NULL, '/kvitter\\/reciepts/', NULL);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
