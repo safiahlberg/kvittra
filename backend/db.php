@@ -16,10 +16,10 @@ class DB extends PDO
 		$db = substr($url["path"], 1);
 
 		try{
-			//var_dump('mysql:host=' . db_host . ';dbname=' . db_name);
+			var_dump('mysql:host=' . db_host . ';dbname=' . db_name);
 			parent::__construct('mysql:host=' . $server . ';dbname=' . $db, $username, $password, $p_DriverOptions);			
 		} catch(PDOExection $e){
-			//Log::advLog(array('PDOMysql error: ' . $e->getMessage()));
+			Log::advLog(array('PDOMysql error: ' . $e->getMessage()));
 			echo 'Error: ' . $e->getMessage() . '<br/>';
 			die();
 		}
