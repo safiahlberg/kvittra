@@ -1,3 +1,9 @@
+<?php
+
+include_once('backend/common.php');
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -11,8 +17,8 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="pages/css/bootstrap.css">
-  <link rel="stylesheet" href="pages/css/main.css">
+  <link rel="stylesheet" href="<?=PROJECT_ROOT;?>/pages/css/bootstrap.css">
+  <link rel="stylesheet" href="<?=PROJECT_ROOT;?>/pages/css/main.css">
 </head>
 
 <body>
@@ -36,7 +42,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="" id="add-reciept">
-				<h3>Lägg till kvitto</h3>
+				<h3><a href="#" id="add-reciept-btn">+ Lägg till kvitto</a></h3>
 			</div>
 		</div>
 	</div>
@@ -52,13 +58,14 @@
 				  <th scope="col">Taggar</th>
 				</tr>
 			  </thead>
-			  <tbody>
+			  <tbody id="reciept-list">
 				<tr>
 				  <td>Målarfärg</td>
 				  <td>Grön målarfärg - 450kr</td>
 				  <td><a href="#">Öppna bilder</a></td>
 				  <td><a href="#">fh482asd01200as0</a></td>
 				  <td><span class="tag">Hus</span><span class="tag">Färg</span></td>
+				  <td><input type="hiddden" name="id" value=""><button class="btn btn-default">Ta bort</button></td>
 				</tr>
 			  </tbody>
 			</table>
@@ -67,6 +74,7 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="pages/js/bootstrap.min.js"></script>
+  <script src="pages/js/reciept.js"></script>
 
 </body>
 

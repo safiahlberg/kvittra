@@ -10,6 +10,14 @@ class RecieptsModel extends Model{
 		return PDOMysqlQuery::FetchAll();
 	}
 	
+	public function addReciept($p_Data){
+		PDOMysqlQuery::Prepared('INSERT INTO k_reciept (display,created) VALUES (?,?)',array($p_Data['display'],$p_Data['created']));
+	}
+	
+	public function removeRecieptById($p_ID){
+		PDOMysqlQuery::Prepared('DELETE FROM k_reciept WHERE id=?',array($p_ID));
+	}
+	
 }
 
 

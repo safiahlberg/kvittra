@@ -10,11 +10,20 @@ class RecieptController extends Controller{
 		
 		$method=$_SERVER['REQUEST_METHOD'];
 		
-		$resources=array('GET'=>'getReciepts');
+		$resources=array(	'GET'=>'getReciepts',
+							'POST'=>'addReciept',
+							'DELETE'=>'deleteReciept'
+		);
 		
 		call_user_func(array($this,$resources[$method]));
 	}
-
+	
+	public function addReciept(){
+		$model=new RecieptsModel();
+		//$model->addReciept();
+		
+	}
+	
 	public function getReciepts(){
 		$model=new RecieptsModel();
 		$result=$model->getReciepts();

@@ -1,7 +1,7 @@
 <?php
 
 
-define('PROJECT_NAME','');
+define('PROJECT_NAME','kvitter');
 
 define('PROJECT_ROOT','http://' . $_SERVER['SERVER_NAME'] . '/' . PROJECT_NAME );
 
