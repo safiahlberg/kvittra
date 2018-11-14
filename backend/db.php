@@ -15,15 +15,8 @@ class DB extends PDO
 		$password = $url["pass"];
 		$db = substr($url["path"], 1);
 
-		try{
-			var_dump('mysql:host=' . $server . ';dbname=' . $db);
-			parent::__construct('mysql:host=' . $server . ';dbname=' . $db, $username, $password, $p_DriverOptions);			
-		} catch(PDOExection $e){
-			Log::advLog(array('PDOMysql error: ' . $e->getMessage()));
-			echo 'Error: ' . $e->getMessage() . '<br/>';
-			die();
-		}
-		//$this->m_DB=mysql_connect(db_host, db_user, db_password);
+		// $this->m_DB=mysql_connect($server, db_user, db_password);
+		$this->m_DB=new mysqli($server, $username, $password, $db);
 	}
 	
 	function __destruct(){
