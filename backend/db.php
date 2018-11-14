@@ -4,12 +4,20 @@ class DB extends PDO
 {	
 	var $m_DB;
 	var $m_Debug;
+
+
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$db = substr($url["path"], 1);
 	
-	function __construct(array $p_DriverOptions=array(), $p_Host=DB_HOST, $p_Name=DB_NAME, $p_User=DB_USER, $p_Password=DB_PASSWORD)
+	function __construct(array $p_DriverOptions=array(), $p_Host=$server, $p_Name=$db, $p_User=$username, $p_Password=$password)
 	{
 		try{
 			//var_dump('mysql:host=' . db_host . ';dbname=' . db_name);
-			parent::__construct('mysql:host=' . $p_Host . ';dbname=' . $p_Name, $p_User, $p_Password, $p_DriverOptions);
+			parent::__construct('mysql:host=' . $p_Host . ';dbname=' . $p_Name, $p_User, $p_Password, $p_DriverOptions);			
 		} catch(PDOExection $e){
 			//Log::advLog(array('PDOMysql error: ' . $e->getMessage()));
 			echo 'Error: ' . $e->getMessage() . '<br/>';
